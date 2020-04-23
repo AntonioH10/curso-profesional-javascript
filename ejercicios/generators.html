@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generators</title>
+  </head>
+  <body>
+    <a href="./index.html">Go Back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      // los generadores son funciones de las que se puede salir y volver a entrar
+      // su contexto (asociacion de variables) sera conservado entre las reentradas
+      // cada vez que llamamos next, la ejecucion del generador va a continuar hasta el proximo yield
+      function* simpleGenerator() {
+        // 1) Esta funcion no es ejecutable de por si
+        // 3) al ejecutar gen, nos dara una funcion suspended, tenemos que ejecutar gen.next() para que continue la ejecucion, esto devolvera tambien un objeto con un { value: undefined, done: true }
+        console.log("GENERATOR START");
+        // 4) para retornar un value que no se indefinido usaremos yield:
+        yield 1;
+        // 5) esto retornará { value: 1, done: false }
+        yield 2;
+        yield "string?";
+        console.log("GENERATOR END");
+      }
+
+      // 2) creamos una que si se ejecutable
+      const gen = simpleGenerator();
+
+      // Podemos ahcer generadores infinitos
+
+      function* idMaker() {
+        let id = 1;
+        while (true) {
+          yield id;
+          id = id + 1;
+        }
+      }
+
+      const nGen = idMaker();
+
+      // Cuando llamamos next tambien podemos pasar valores que la funcion recibe
+      function* idMakerWithReset() {
+        let id = 1;
+        let reset;
+        while (true) {
+          // 6) si le pasamos next(true), el yield le dara el valor al reset
+          reset = yield id;
+          if (reset) {
+            id = 1;
+          } else {
+            id = id + 1;
+          }
+        }
+      }
+
+      const mGen = idMakerWithReset();
+
+      // Ahora hagamos un ejemplo un poco mas complejo: la secuencia fibonacci
+      function* fibonacci() {
+        let a = 1;
+        let b = 1;
+        while (true) {
+          const nextNumber = a + b;
+          a = b;
+          b = nextNumber;
+          yield nextNumber;
+        }
+      }
+
+      const fibo = fibonacci();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Function.prototype.call, Function.prototype.apply, Function.prototype.bind
+    </title>
+  </head>
+  <body>
+    <a href="./index.html">Go Back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+      <li><button class="call-to-action">Aprender</button></li>
+      <li><button class="call-to-action">Aprender Mas</button></li>
+      <li><button class="call-to-action">¡Nunca parar de Aprender</button></li>
+    </ul>
+
+    <script>
+      // Establece 'this' usando 'call'
+      function saludar() {
+        console.log(`Hola. Soy ${this.name} ${this.apellido}`);
+      }
+
+      const richard = {
+        name: "Richard",
+        apellido: "Kaufman López",
+      };
+
+      saludar.call(richard);
+
+      // TODAS las funciones tienen 'call' 'aplly' 'bind'
+      function caminar(metros, direccion) {
+        console.log(`${this.name} camina ${metros} metros hacia ${direccion}`);
+      }
+
+      // El primer argumento de call, es el 'this', luego vendrían los argumentos propios de la funcion en este caso de caminar
+      caminar.call(richard, 400, "norte");
+
+      // APPLY: misma funcionalidad de call pero recibe los argumentos de forma distinta, en forma de Array
+      caminar.apply(richard, [200, "sur"]);
+
+      /*
+        Call - C - COMAS
+        Apply - A- ARREGLO
+      */
+
+      // Para BIND: bind crea nuevas funciones
+      const daniel = { name: "Daniel", apellido: "Sanchez" };
+      const danielSaluda = saludar.bind(daniel);
+      danielSaluda();
+
+      // Existen dos formas de llamar la funcion
+      // Hardcodeado
+      const danielCamina = caminar.bind(daniel, 444, "oeste");
+      danielCamina();
+
+      // Utilizable multiples veces
+      const danielCorre = caminar.bind(daniel);
+      danielCorre(500, "este");
+
+      // Se puede usar parcialmente ambos
+      const danielAvanza = caminar.bind(daniel, 30);
+      danielAvanza("norte");
+      danielAvanza("sureste");
+
+      // Cuando es util
+      const buttons = document.getElementsByClassName("call-to-action");
+
+      // Nodelist
+      Array.prototype.forEach.call(buttons, (button) => {
+        button.onclick = () => alert("¡Nunca pares de aprender!");
+      });
+    </script>
+  </body>
+</html>
