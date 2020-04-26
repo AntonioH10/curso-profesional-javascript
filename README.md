@@ -1,4 +1,4 @@
-# Curso Profesional Javascript
+# Proyecto del Curso Profesional Javascript
 
 > De Platzi
 
