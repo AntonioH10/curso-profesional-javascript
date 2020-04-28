@@ -45,5 +45,5 @@ async function updateCache(request) {
   // Se pide la copia actualizada
   const response = await fetch(request);
   // Esto es lo que se utilizara para poner actualizacion
-  return cache.put(resquest, response);
+  return cache.put(request, response);
 }
