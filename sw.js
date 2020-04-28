@@ -41,7 +41,7 @@ async function cachedResponse(request) {
 }
 
 async function updateCache(request) {
-  const cahce = await caches.open(VERSION);
+  const cache = await caches.open(VERSION);
   // Se pide la copia actualizada
   const response = await fetch(request);
   // Esto es lo que se utilizara para poner actualizacion
