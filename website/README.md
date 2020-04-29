@@ -29,15 +29,3 @@ Es una versión tipada de JavaScript, se aprende sobre sus tipos básicos y las 
 Son una solución para un problema dentro de un contexto, esta situación debe ser recurrente, se debe evitar su aplicación a menudo ya que agrega un nivel de complejidad al código (que siempre se debe tratar de mantener lo más simple posible).
 
 Dentro del curso de explican las categorías de los patrones de diseño (Creacionales, Estructurales y de Comportamiento) y se aplica uno de cada categoría (Singleton, Decorator y Observser, respectivamente).
-
-# Conclusiones
-
-Para terminar, durante el proyecto se crea un Plugin de Ads que aparecen cada 30 segundos de reproducción del video, y desaparecen 10 segundos despues.
-
-También se dividió el proyecto entre el MediaPlayer y el website donde se implementa para poder publicar el MediaPlayer como un módulo de NPM e implementarlo en el website.
-
-# Instalación del Módulo
-
-```
-npm install @antoniojh10/platzimediaplayer
-```

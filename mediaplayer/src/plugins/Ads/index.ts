@@ -50,7 +50,7 @@ class AdsPlugin {
 
     setTimeout(() => {
       this.currentAd = null;
-      this.adsContainer.innerHTML = null;
+      this.adsContainer.innerHTML = "";
     }, 10000);
     // console.log(this.currentAd);
   }

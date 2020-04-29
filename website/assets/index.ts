@@ -1,7 +1,7 @@
-import MediaPlayer from "./MediaPlayer";
-import AutoPlay from "./plugins/AutoPlay";
-import AutoPause from "./plugins/AutoPause";
-import Ads from "./plugins/Ads";
+import MediaPlayer from "@antoniojh10/platzimediaplayer";
+import AutoPlay from "@antoniojh10/platzimediaplayer/lib/plugins/AutoPlay";
+import AutoPause from "@antoniojh10/platzimediaplayer/lib/plugins/AutoPause";
+import Ads from "@antoniojh10/platzimediaplayer/lib/plugins/Ads";
 
 const video = document.querySelector("video");
 const buttonPlay: HTMLElement = document.getElementById("toggle-play");
